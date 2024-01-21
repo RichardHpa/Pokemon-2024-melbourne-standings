@@ -1,5 +1,6 @@
 {
   "name": "pokemon-2024-melbourne-standings",
+  "homepage": "https://richardhpa.github.io/Pokemon-2024-melbourne-standings/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
