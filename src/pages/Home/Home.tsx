@@ -22,7 +22,7 @@ export const Home = () => {
         {isLoading ? (
           <h4 className="text-2xl font-bold dark:text-white text-center">Loading Standings...</h4>
         ) : (
-          <div className="flex gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {data?.map(player => (
               <div className="flex-1" key={player.name}>
                 <Card>
