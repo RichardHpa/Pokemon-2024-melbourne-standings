@@ -6,7 +6,7 @@ import { Error404 } from './errors';
 function App() {
   return (
     <div className="bg-white dark:bg-gray-900 text-black dark:text-gray-200 min-h-screen flex flex-col">
-      <div className="container mx-auto py-2">
+      <div className="container mx-auto py-12">
         <Routes>
           <Route index element={<Home />} />
           <Route path="*" element={<Error404 />} />
