@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Pokemon-2024-melbourne-standings/static/css/main.41a5af6c.css",
-    "main.js": "/Pokemon-2024-melbourne-standings/static/js/main.795ac781.js",
+    "main.css": "/Pokemon-2024-melbourne-standings/static/css/main.16967097.css",
+    "main.js": "/Pokemon-2024-melbourne-standings/static/js/main.43a1a9f8.js",
     "static/js/787.b63a6ea7.chunk.js": "/Pokemon-2024-melbourne-standings/static/js/787.b63a6ea7.chunk.js",
     "index.html": "/Pokemon-2024-melbourne-standings/index.html",
-    "main.41a5af6c.css.map": "/Pokemon-2024-melbourne-standings/static/css/main.41a5af6c.css.map",
-    "main.795ac781.js.map": "/Pokemon-2024-melbourne-standings/static/js/main.795ac781.js.map",
+    "main.16967097.css.map": "/Pokemon-2024-melbourne-standings/static/css/main.16967097.css.map",
+    "main.43a1a9f8.js.map": "/Pokemon-2024-melbourne-standings/static/js/main.43a1a9f8.js.map",
     "787.b63a6ea7.chunk.js.map": "/Pokemon-2024-melbourne-standings/static/js/787.b63a6ea7.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.41a5af6c.css",
-    "static/js/main.795ac781.js"
+    "static/css/main.16967097.css",
+    "static/js/main.43a1a9f8.js"
   ]
 }
