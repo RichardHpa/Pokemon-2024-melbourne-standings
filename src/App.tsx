@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 
-import { Home, Test } from './pages';
+import { Home } from './pages';
 import { Error404 } from './errors';
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
       <div className="container mx-auto py-12 px-4">
         <Routes>
           <Route index element={<Home />} />
-          <Route path="test" element={<Test />} />
+
           <Route path="*" element={<Error404 />} />
         </Routes>
       </div>

@@ -1,17 +1,25 @@
+import { useMemo } from 'react';
+import { Link } from 'react-router-dom';
+
+import { colorMap } from 'utils/ColorMap';
+import { calculatePoints } from 'utils/calculatePoints';
+
 import type { PlayerCardProps } from './types';
 import type { FC } from 'react';
 
-import { colorMap } from 'utils/ColorMap';
-
 export const PlayerCard: FC<PlayerCardProps> = ({ player }) => {
+  const totalPoints = useMemo(() => {
+    return calculatePoints(player.record);
+  }, [player.record]);
+
   return (
     <div>
-      <div className="flex justify-between mb-4 items-start">
+      <div className="flex justify-between align-top mb-4 items-start">
         <div className="font-medium dark:text-white flex flex-col gap-4">
           <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white">
             {player.name}{' '}
             <span className="block text-sm text-gray-500 dark:text-gray-400">
-              {player.record.wins}-{player.record.losses}-{player.record.ties}
+              {player.record.wins}-{player.record.losses}-{player.record.ties} ({totalPoints})
             </span>
           </h5>
           <p>
@@ -25,6 +33,12 @@ export const PlayerCard: FC<PlayerCardProps> = ({ player }) => {
             </span>
           </p>
         </div>
+        <Link
+          to=""
+          className="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500"
+        >
+          More info
+        </Link>
       </div>
       <hr />
       <div className="flow-root">
