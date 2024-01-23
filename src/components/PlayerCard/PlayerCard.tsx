@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { colorMap } from 'utils/ColorMap';
 import { calculatePoints } from 'utils/calculatePoints';
+import { createPlayerUrl } from 'utils/createPlayerUrl';
 
 import type { PlayerCardProps } from './types';
 import type { FC } from 'react';
@@ -34,7 +35,7 @@ export const PlayerCard: FC<PlayerCardProps> = ({ player }) => {
           </p>
         </div>
         <Link
-          to=""
+          to={`player/${createPlayerUrl(player.name)}`}
           className="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500"
         >
           More info
