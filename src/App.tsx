@@ -14,6 +14,7 @@ function App() {
             </h1>
           </Link>
         </div>
+
         <Routes>
           <Route index element={<Home />} />
           <Route path="player" element={<Outlet />}>

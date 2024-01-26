@@ -1,0 +1,1 @@
+export { SimilarPoints } from './SimilarPoints';

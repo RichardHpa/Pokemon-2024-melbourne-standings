@@ -4,6 +4,16 @@ export type RecordProps = {
   [key in Results]: number;
 };
 
+export interface Round {
+  name: string;
+  result: string;
+  table: number;
+}
+
+export interface Rounds {
+  [key: string]: Round;
+}
+
 export interface Standing {
   name: string;
   placing: number;
@@ -15,11 +25,5 @@ export interface Standing {
   };
   decklist: string;
   drop: number;
-  rounds: {
-    [key: string]: {
-      name: string;
-      result: string;
-      table: number;
-    };
-  };
+  rounds: Rounds;
 }
