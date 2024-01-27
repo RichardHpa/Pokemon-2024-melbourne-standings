@@ -10,7 +10,6 @@ import type { StandingsListProps } from './types';
 import type { FC } from 'react';
 
 const innerElementType = forwardRef(({ ...rest }: ListChildComponentProps, ref) => {
-  console.log('ref', ref);
   // @ts-expect-error
   return <ul ref={ref} {...rest} className="divide-y divide-gray-200 dark:divide-gray-700" />;
 });
@@ -18,8 +17,6 @@ const innerElementType = forwardRef(({ ...rest }: ListChildComponentProps, ref) 
 export const StandingsList: FC<StandingsListProps> = ({ currentPlayerIndex, data }) => {
   const listRef = useRef(null);
   const [test, setTest] = useState(false);
-
-  console.log('render', test, listRef.current);
 
   useEffect(() => {
     // this is to demonstrate a case where the rendering
@@ -30,7 +27,6 @@ export const StandingsList: FC<StandingsListProps> = ({ currentPlayerIndex, data
   }, []);
 
   useEffect(() => {
-    console.log('effect', listRef.current);
     if (listRef.current) {
       // @ts-expect-error
       listRef.current.scrollToItem(currentPlayerIndex, 'start');

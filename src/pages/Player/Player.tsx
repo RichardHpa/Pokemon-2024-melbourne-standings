@@ -48,6 +48,11 @@ export const Player = () => {
     return calculatePoints(player.record);
   }, [player]);
 
+  const rounds = useMemo(() => {
+    if (!player) return [];
+    return Object.keys(player.rounds).map(round => player.rounds[round]);
+  }, [player]);
+
   if (!player || !data) {
     return (
       <h4 className="text-2xl font-bold dark:text-white text-center">Loading Player Info...</h4>
@@ -94,7 +99,7 @@ export const Player = () => {
           <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white mb-2">
             Players with also {totalPoints} Points
           </h5>
-          <SimilarPoints player={player} data={data} />
+          {rounds.length > 1 && <SimilarPoints player={player} data={data} />}
         </Card>
         <div className="col-span-1 sm:col-span-2 lg:col-span-1 min-h-96">
           <Card>
@@ -102,7 +107,7 @@ export const Player = () => {
               Current placement on the ladder
             </h5>
 
-            <StandingsList data={data} currentPlayerIndex={player.index} />
+            {rounds.length > 1 && <StandingsList data={data} currentPlayerIndex={player.index} />}
           </Card>
         </div>
       </div>
