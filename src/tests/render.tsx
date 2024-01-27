@@ -1,4 +1,5 @@
 import React, { ReactElement } from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import { render, RenderOptions } from '@testing-library/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
@@ -13,7 +14,11 @@ const queryClient = new QueryClient({
 });
 
 const Provider = ({ children }: { children: React.ReactNode }) => {
-  return <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>;
+  return (
+    <BrowserRouter>
+      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+    </BrowserRouter>
+  );
 };
 
 const providedRender = (ui: ReactElement, options?: Omit<RenderOptions, 'wrapper'>) =>

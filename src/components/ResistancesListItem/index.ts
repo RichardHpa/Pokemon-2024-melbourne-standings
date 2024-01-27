@@ -1,0 +1,1 @@
+export { ResistancesListItem } from './ResistancesListItem';
