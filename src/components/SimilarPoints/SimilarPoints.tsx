@@ -11,13 +11,13 @@ export const SimilarPoints: FC<SimilarPointsProps> = ({ player, data }) => {
   return (
     <ul className="divide-y divide-gray-200 dark:divide-gray-700">
       {players?.above?.map(otherPlayer => {
-        return <ResistancesListItem state="above" player={otherPlayer} />;
+        return <ResistancesListItem state="above" player={otherPlayer} key={otherPlayer.name} />;
       })}
 
-      <li className="py-3 sm:py-4">
+      <li className="py-3 sm:py-4 bg-gray-700">
         <div className="flex items-center">
           <div className="flex-1 min-w-0 ms-4">
-            <div className="flex justify-between font-bold">
+            <div className="flex justify-between font-bold flex-wrap">
               <p>Your Placement</p>
 
               <p>{player.resistances.opp}</p>
@@ -27,7 +27,7 @@ export const SimilarPoints: FC<SimilarPointsProps> = ({ player, data }) => {
       </li>
 
       {players?.above?.map(otherPlayer => {
-        return <ResistancesListItem state="below" player={otherPlayer} />;
+        return <ResistancesListItem state="below" player={otherPlayer} key={otherPlayer.name} />;
       })}
     </ul>
   );

@@ -11,7 +11,7 @@ export const ResistancesListItem: FC<ResistancesListItemProps> = ({ state, playe
           <p className="text-sm text-gray-500 truncate dark:text-gray-400">
             {player.record.wins}-{player.record.losses}-{player.record.ties}
           </p>
-          <div className="flex justify-between">
+          <div className="flex justify-between flex-wrap">
             <p>{player.name}</p>
             <div className="flex gap-1">
               {state === 'above' ? <ChevronUpIcon className="h-6 w-6 text-red-500" /> : null}

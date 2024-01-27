@@ -5,6 +5,7 @@ import { useQueryClient } from '@tanstack/react-query';
 import { Card } from 'components/Card';
 import { RoundsTable } from 'components/RoundsTable';
 import { SimilarPoints } from 'components/SimilarPoints';
+import { StandingsList } from 'components/StandingsList';
 
 import { invariant } from 'utils/invariant';
 import { createPlayerName } from 'utils/createPlayerName';
@@ -82,7 +83,7 @@ export const Player = () => {
         </Card>
       </div>
 
-      <div className="mb-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="mb-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         <Card>
           <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white mb-2">
             Rounds
@@ -95,11 +96,15 @@ export const Player = () => {
           </h5>
           <SimilarPoints player={player} data={data} />
         </Card>
-        <Card>
-          <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white mb-2">
-            Players with also {totalPoints} Points
-          </h5>
-        </Card>
+        <div className="col-span-1 sm:col-span-2 lg:col-span-1 min-h-96">
+          <Card>
+            <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white mb-2">
+              Current placement on the ladder
+            </h5>
+
+            <StandingsList data={data} currentPlayerIndex={player.index} />
+          </Card>
+        </div>
       </div>
     </>
   );
