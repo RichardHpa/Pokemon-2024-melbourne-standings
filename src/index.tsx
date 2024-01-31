@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom/client';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { HashRouter } from 'react-router-dom';
+import { FetchingProvider } from './context/FetchingContext';
 
 import './index.css';
 import App from './App';
@@ -16,8 +17,10 @@ root.render(
   <React.StrictMode>
     <HashRouter>
       <QueryClientProvider client={queryClient}>
-        <App />
-        <ReactQueryDevtools />
+        <FetchingProvider>
+          <App />
+          <ReactQueryDevtools />
+        </FetchingProvider>
       </QueryClientProvider>
     </HashRouter>
   </React.StrictMode>

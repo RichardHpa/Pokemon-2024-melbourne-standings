@@ -53,7 +53,7 @@ export const StandingsList: FC<StandingsListProps> = ({ currentPlayerIndex, data
                   <div className="flex items-center">
                     <div className="flex">
                       {data[index].placing}
-                      <div className="flex-1 min-w-0 ms-4">
+                      <div className="flex-1 min-w-0 mx-2">
                         <p className="text-sm text-gray-500 truncate dark:text-gray-400">
                           {data[index].record.wins}-{data[index].record.losses}-
                           {data[index].record.ties}
