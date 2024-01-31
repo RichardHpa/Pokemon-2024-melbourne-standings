@@ -7,7 +7,7 @@ export const ResistancesListItem: FC<ResistancesListItemProps> = ({ state, playe
   return (
     <li className="py-3 sm:py-4" key={player.name}>
       <div className="flex items-center">
-        <div className="flex-1 min-w-0 ms-4">
+        <div className="flex-1 min-w-0 mx-2">
           <p className="text-sm text-gray-500 truncate dark:text-gray-400">
             {player.record.wins}-{player.record.losses}-{player.record.ties}
           </p>

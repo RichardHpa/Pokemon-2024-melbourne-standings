@@ -1,6 +1,6 @@
-import { useMemo, useEffect, useState } from 'react';
+import { useMemo } from 'react';
 import { useParams } from 'react-router-dom';
-import { useQueryClient } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 
 import { Card } from 'components/Card';
 import { RoundsTable } from 'components/RoundsTable';
@@ -16,31 +16,20 @@ import { getPokedataStandings } from 'api/getPokedataStandings';
 
 import { tournamentId } from 'constants/tournamentInfo';
 
-import type { Standing } from 'types/standing';
-
 export const Player = () => {
   const { playerName } = useParams();
   invariant(playerName);
-  const queryClient = useQueryClient();
-  const [data, setData] = useState<Standing[]>();
 
-  useEffect(() => {
-    async function fetchData() {
-      const res = await queryClient.ensureQueryData({
-        queryKey: ['tournamentId', tournamentId],
-        queryFn: () => getPokedataStandings(tournamentId),
-      });
-      setData(res);
-    }
-
-    fetchData();
-  }, [queryClient]);
+  const { data } = useQuery({
+    queryKey: ['tournamentId', tournamentId],
+    queryFn: () => getPokedataStandings(tournamentId),
+  });
 
   const player = useMemo(() => {
     if (!data) return undefined;
     const res = getPlayerInfo(data, createPlayerName(playerName));
     if (!res) throw new Error('Player not found');
-    return { ...res.player, index: res.index };
+    return { ...res.player };
   }, [data, playerName]);
 
   const totalPoints = useMemo(() => {
@@ -107,7 +96,9 @@ export const Player = () => {
               Current placement on the ladder
             </h5>
 
-            {rounds.length > 1 && <StandingsList data={data} currentPlayerIndex={player.index} />}
+            {rounds.length > 1 && (
+              <StandingsList data={data} currentPlayerIndex={player.placing - 1} />
+            )}
           </Card>
         </div>
       </div>

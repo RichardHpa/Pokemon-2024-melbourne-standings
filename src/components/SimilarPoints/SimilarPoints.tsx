@@ -6,7 +6,7 @@ import type { FC } from 'react';
 import type { SimilarPointsProps } from './types';
 
 export const SimilarPoints: FC<SimilarPointsProps> = ({ player, data }) => {
-  const players = useGetSimilarPlayers(player.index, data);
+  const players = useGetSimilarPlayers(player.placing - 1, data);
 
   return (
     <ul className="divide-y divide-gray-200 dark:divide-gray-700">
@@ -16,7 +16,7 @@ export const SimilarPoints: FC<SimilarPointsProps> = ({ player, data }) => {
 
       <li className="py-3 sm:py-4 bg-gray-700">
         <div className="flex items-center">
-          <div className="flex-1 min-w-0 ms-4">
+          <div className="flex-1 min-w-0 mx-2">
             <div className="flex justify-between font-bold flex-wrap">
               <p>Your Placement</p>
 
