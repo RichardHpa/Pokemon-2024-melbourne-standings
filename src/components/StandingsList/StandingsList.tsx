@@ -68,7 +68,7 @@ export const StandingsList: FC<StandingsListProps> = ({ currentPlayerIndex, data
               height={height}
               width={width}
             >
-              {({ data, index, style, ...rest2 }) => {
+              {({ data, index, style }) => {
                 return (
                   <li className="py-3 sm:py-4" key={index} style={style}>
                     <div className="flex items-center">
