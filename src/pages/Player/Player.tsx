@@ -85,17 +85,12 @@ export const Player = () => {
           <RoundsTable rounds={player.rounds} />
         </Card>
         <Card>
-          <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white mb-2">
-            Players with also {totalPoints} Points
-          </h5>
-          {rounds.length > 1 && <SimilarPoints player={player} data={data} />}
+          {rounds.length > 1 && (
+            <SimilarPoints player={player} data={data} totalPoints={totalPoints} />
+          )}
         </Card>
         <div className="col-span-1 sm:col-span-2 lg:col-span-1 min-h-96">
           <Card>
-            <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white mb-2">
-              Current placement on the ladder
-            </h5>
-
             {rounds.length > 1 && (
               <StandingsList data={data} currentPlayerIndex={player.placing - 1} />
             )}
