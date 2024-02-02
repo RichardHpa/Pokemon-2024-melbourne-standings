@@ -14,6 +14,9 @@ export const useGetSimilarPlayers = (index: number, data: Standing[]) => {
     below: [],
   };
 
+  console.log(data[index + 1]);
+  console.log(data[index]);
+  console.log(data[index - 1]);
   const player = data[index];
   const points = calculatePoints(player.record);
 
@@ -21,7 +24,7 @@ export const useGetSimilarPlayers = (index: number, data: Standing[]) => {
   const playersAbove: Standing[] = [];
   for (let i = index - 1; i >= 0; i--) {
     if (calculatePoints(data[i].record) === points) {
-      playersAbove.push(data[i]);
+      playersAbove.unshift(data[i]);
     } else {
       break;
     }
