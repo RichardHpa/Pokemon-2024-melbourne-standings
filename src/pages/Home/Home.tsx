@@ -26,6 +26,16 @@ export const Home = () => {
   if (isLoading)
     return <h4 className="text-2xl font-bold dark:text-white text-center">Loading Standings...</h4>;
 
+  if (!isLoading && !filteredPlayers)
+    return <h4 className="text-2xl font-bold dark:text-white text-center">No data available</h4>;
+
+  if (!isLoading && filteredPlayers?.length === 0)
+    return (
+      <h4 className="text-2xl font-bold dark:text-white text-center">
+        The Tournament hasn't started yet
+      </h4>
+    );
+
   return (
     <div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

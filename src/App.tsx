@@ -10,7 +10,7 @@ function App() {
         <div className="pb-10">
           <Link to="/">
             <h1 className="text-5xl font-extrabold dark:text-white text-center">
-              Pokemon TCG Liverpool Regionals Standings
+              Pokemon TCG Melbourne 2024 Regionals Standings
             </h1>
           </Link>
         </div>
