@@ -6,10 +6,8 @@ import { ResistancesListItem } from 'components/ResistancesListItem';
 import type { FC } from 'react';
 import type { SimilarPointsProps } from './types';
 
-export const SimilarPoints: FC<SimilarPointsProps> = ({ player, data }) => {
+export const SimilarPoints: FC<SimilarPointsProps> = ({ player, data, totalPoints }) => {
   const players = useGetSimilarPlayers(player.placing - 1, data);
-
-  console.log(players?.below);
 
   const renderAbove = useMemo(() => {
     if (!players?.above) return null;
@@ -72,23 +70,33 @@ export const SimilarPoints: FC<SimilarPointsProps> = ({ player, data }) => {
     });
   }, [players?.below]);
 
+  const playerCount = useMemo(() => {
+    if (!players) return 0;
+    return players.above.length + players.below.length + 1;
+  }, [players]);
+
   return (
-    <ul className="divide-y divide-gray-200 dark:divide-gray-700">
-      {renderAbove}
+    <>
+      <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white mb-2">
+        There are {playerCount} players with also {totalPoints} Points
+      </h5>
+      <ul className="divide-y divide-gray-200 dark:divide-gray-700">
+        {renderAbove}
 
-      <li className="py-3 sm:py-4 bg-gray-700">
-        <div className="flex items-center">
-          <div className="flex-1 min-w-0 mx-2">
-            <div className="flex justify-between font-bold flex-wrap">
-              <p>Your Placement</p>
+        <li className="py-3 sm:py-4 bg-gray-700">
+          <div className="flex items-center">
+            <div className="flex-1 min-w-0 mx-2">
+              <div className="flex justify-between font-bold flex-wrap">
+                <p>Your Placement</p>
 
-              <p>{player.resistances.opp}</p>
+                <p>{player.resistances.opp}</p>
+              </div>
             </div>
           </div>
-        </div>
-      </li>
+        </li>
 
-      {renderBelow}
-    </ul>
+        {renderBelow}
+      </ul>
+    </>
   );
 };
