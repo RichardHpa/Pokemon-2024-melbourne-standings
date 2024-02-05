@@ -15,7 +15,6 @@ const innerElementType = forwardRef(({ ...rest }: ListChildComponentProps, ref) 
 });
 
 export const StandingsList: FC<StandingsListProps> = ({ currentPlayerIndex, data }) => {
-  console.log(data);
   const listRef = useRef(null);
   const [test, setTest] = useState(false);
 
@@ -91,7 +90,7 @@ export const StandingsList: FC<StandingsListProps> = ({ currentPlayerIndex, data
                             <svg
                               stroke="currentColor"
                               fill="currentColor"
-                              stroke-width="0"
+                              strokeWidth="0"
                               viewBox="0 0 416 512"
                               className="shrink-0 h-5 w-5"
                               height="1em"

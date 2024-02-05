@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { HashRouter } from 'react-router-dom';
 import { FetchingProvider } from './context/FetchingContext';
+import { TournamentProvider } from './context/TournamentContext';
 
 import './index.css';
 import App from './App';
@@ -16,12 +17,14 @@ const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <React.StrictMode>
     <HashRouter>
-      <QueryClientProvider client={queryClient}>
-        <FetchingProvider>
-          <App />
-          <ReactQueryDevtools />
-        </FetchingProvider>
-      </QueryClientProvider>
+      <TournamentProvider>
+        <QueryClientProvider client={queryClient}>
+          <FetchingProvider>
+            <App />
+            <ReactQueryDevtools />
+          </FetchingProvider>
+        </QueryClientProvider>
+      </TournamentProvider>
     </HashRouter>
   </React.StrictMode>
 );

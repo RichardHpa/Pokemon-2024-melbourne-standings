@@ -3,14 +3,16 @@ import { useQuery } from '@tanstack/react-query';
 
 import { Card } from 'components/Card';
 import { PlayerCard } from 'components/PlayerCard';
+import { useTournament } from 'context/TournamentContext';
 
 import { getPokedataStandings } from 'api/getPokedataStandings';
 import { getPlayersStandings } from 'utils/getPlayersStandings';
 
-import { tournamentId } from 'constants/tournamentInfo';
+// import { tournamentRegionalId } from 'constants/tournamentInfo';
 import { basePlayerNames } from 'constants/basePlayerNames';
 
 export const Home = () => {
+  const { tournamentId } = useTournament();
   const { data, isLoading, dataUpdatedAt, refetch } = useQuery({
     queryKey: ['tournamentId', tournamentId],
     queryFn: () => getPokedataStandings(tournamentId),

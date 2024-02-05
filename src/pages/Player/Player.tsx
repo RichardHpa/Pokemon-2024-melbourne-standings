@@ -6,6 +6,7 @@ import { Card } from 'components/Card';
 import { RoundsTable } from 'components/RoundsTable';
 import { SimilarPoints } from 'components/SimilarPoints';
 import { StandingsList } from 'components/StandingsList';
+import { useTournament } from 'context/TournamentContext';
 
 import { invariant } from 'utils/invariant';
 import { createPlayerName } from 'utils/createPlayerName';
@@ -14,26 +15,27 @@ import { calculatePoints } from 'utils/calculatePoints';
 
 import { getPokedataStandings } from 'api/getPokedataStandings';
 
-import { tournamentId } from 'constants/tournamentInfo';
-
 export const Player = () => {
   const { playerName } = useParams();
   invariant(playerName);
 
-  const { data } = useQuery({
+  const { tournamentId } = useTournament();
+
+  const { data, isLoading } = useQuery({
     queryKey: ['tournamentId', tournamentId],
     queryFn: () => getPokedataStandings(tournamentId),
   });
 
   const player = useMemo(() => {
-    if (!data) return undefined;
+    if (!data) return;
     const res = getPlayerInfo(data, createPlayerName(playerName));
-    if (!res) throw new Error('Player not found');
+    if (!res) return;
     return { ...res.player };
   }, [data, playerName]);
 
   const totalPoints = useMemo(() => {
-    if (!player) return undefined;
+    if (!player) return;
+
     return calculatePoints(player.record);
   }, [player]);
 
@@ -42,10 +44,18 @@ export const Player = () => {
     return Object.keys(player.rounds).map(round => player.rounds[round]);
   }, [player]);
 
-  if (!player || !data) {
+  if (isLoading) {
     return (
       <h4 className="text-2xl font-bold dark:text-white text-center">Loading Player Info...</h4>
     );
+  }
+
+  if (!player) {
+    return <h4 className="text-2xl font-bold dark:text-white text-center">Player not found</h4>;
+  }
+
+  if (!data) {
+    return <h4 className="text-2xl font-bold dark:text-white text-center">No data available</h4>;
   }
 
   return (
