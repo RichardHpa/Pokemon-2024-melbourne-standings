@@ -11,6 +11,7 @@ jest.mock('utils/getPlayersStandings');
 
 const mockedStandings = standings.slice(0, 3);
 
+jest.useFakeTimers();
 describe('Home', () => {
   beforeEach(() => {
     (getPlayersStandings as jest.Mock).mockReturnValue(mockedStandings);
@@ -20,6 +21,8 @@ describe('Home', () => {
     render(<Home />);
 
     expect(screen.getByText('Loading Standings...')).toBeInTheDocument();
+
+    jest.runAllTimers();
 
     // wait for loading to finish
     await waitForElementToBeRemoved(() => screen.queryByText('Loading Standings...'));
